@@ -1,0 +1,383 @@
+:root {
+  --color-bg: #f4f6f8;
+  --color-card: #ffffff;
+  --color-border: #e0e4e8;
+  --color-text: #1f2933;
+  --color-muted: #6b7684;
+  --color-primary: #2f6fed;
+  --color-primary-dark: #1f52b8;
+  --color-danger: #d64545;
+  --color-error: #d64545;
+  --color-success: #2fa84f;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+header {
+  padding: 20px 16px 8px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.tabbar {
+  display: flex;
+  max-width: 640px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+  gap: 6px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.card h2 {
+  margin: 0 0 14px;
+  font-size: 1.15rem;
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-bottom: 4px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--color-text);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.hint {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  margin: 4px 0 0;
+  font-style: italic;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+#settings-save-btn {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+#settings-save-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+}
+
+button.secondary:hover {
+  background: var(--color-bg);
+}
+
+button.link-btn {
+  background: transparent;
+  color: var(--color-primary);
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card.banner {
+  background: #fffaf0;
+  border-color: #e7c47a;
+}
+
+.card.banner p {
+  margin: 0;
+}
+
+.freshness-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  padding: 0 2px;
+}
+
+/* Map */
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 4px 0 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+#map {
+  width: 100%;
+  height: 480px;
+  border-radius: 8px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.radius-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 2px;
+}
+
+.radius-control label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.radius-control input[type="range"] {
+  flex: 1;
+}
+
+/* Google Maps 自訂控制項按鈕，注入到地圖右下角 */
+.map-locate-btn {
+  margin: 10px;
+  padding: 8px 14px;
+  background: #ffffff;
+  color: var(--color-text);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.map-locate-btn:hover {
+  background: #f4f6f8;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table.nearby-table {
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+table.nearby-table th,
+table.nearby-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+table.nearby-table thead th {
+  text-align: center;
+  border-bottom: 2px solid var(--color-border);
+}
+
+table.nearby-table tbody th {
+  text-align: left;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+table.nearby-table td.store-name-cell {
+  text-align: left;
+}
+
+.value-positive {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.value-negative {
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+.store-col-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.empty-state {
+  color: var(--color-muted);
+  text-align: center;
+  padding: 24px 0;
+  font-size: 0.95rem;
+}
+
+/* Detail card */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detail-row .detail-label {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.detail-row .detail-value {
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.detail-value.positive {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.detail-value.negative {
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+/* InfoWindow content (Google Maps injects this into its own DOM, keep it self-contained) */
+.gm-info-content {
+  font-family: "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  min-width: 160px;
+}
+
+.gm-info-content strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+#data-status-content {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-bottom: 14px;
+}
+
+/* 月營收折線圖 */
+.subsection-title {
+  margin: 20px 0 8px;
+  font-size: 1rem;
+}
+
+.chart-scroll {
+  overflow-x: auto;
+}
+
+.revenue-chart-svg {
+  display: block;
+  height: auto;
+}

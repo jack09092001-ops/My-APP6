@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>門市營運看板</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2f6fed">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="門市看板">
+<link rel="apple-touch-icon" href="icon.svg">
+</head>
+<body>
+  <header>
+    <h1>門市營運看板</h1>
+  </header>
+
+  <nav class="tabbar" id="tabbar">
+    <button type="button" class="tab-btn active" data-tab="map-tab">門市分布</button>
+    <button type="button" class="tab-btn" data-tab="search-tab">門市搜尋</button>
+    <button type="button" class="tab-btn" data-tab="settings-tab">設定</button>
+  </nav>
+
+  <main>
+    <div class="card banner hidden" id="setup-banner">
+      <p>尚未設定 Google API 金鑰與 Excel 檔案 ID，請先到「設定」頁完成設定。</p>
+    </div>
+
+    <div class="freshness-bar hidden" id="freshness-bar">
+      <span id="freshness-text"></span>
+      <button type="button" id="refresh-btn" class="link-btn">重新整理</button>
+    </div>
+
+    <section id="map-tab" class="tab-panel">
+      <section class="card" id="map-card">
+        <h2>門市分布地圖</h2>
+        <p class="hint" id="geo-status">正在取得目前位置…</p>
+        <div class="map-legend" id="map-legend"></div>
+        <div id="map"></div>
+        <div class="radius-control">
+          <label for="radius-slider">定位範圍：<span id="radius-value">5</span> km</label>
+          <input type="range" id="radius-slider" min="1" max="5" step="0.5" value="5">
+        </div>
+      </section>
+
+      <section class="card hidden" id="nearby-list-card">
+        <h2>門市資料</h2>
+        <div id="nearby-list"></div>
+      </section>
+    </section>
+
+    <section id="search-tab" class="tab-panel hidden">
+      <section class="card" id="search-card">
+        <h2>依店名搜尋</h2>
+        <div class="field">
+          <label for="store-search">店名</label>
+          <input type="text" id="store-search" list="store-names" placeholder="輸入或選擇店名" autocomplete="off">
+          <datalist id="store-names"></datalist>
+        </div>
+      </section>
+
+      <section class="card hidden" id="detail-card">
+        <h2 id="detail-store-name">—</h2>
+        <div id="detail-content"></div>
+      </section>
+    </section>
+
+    <section id="settings-tab" class="tab-panel hidden">
+      <section class="card" id="settings-card">
+        <h2>API 與資料來源設定</h2>
+        <form id="settings-form" novalidate>
+          <div class="field">
+            <label for="maps-api-key">Google Maps API 金鑰</label>
+            <input type="text" id="maps-api-key" placeholder="用於顯示地圖">
+          </div>
+          <div class="field">
+            <label for="drive-api-key">Google Drive API 金鑰</label>
+            <input type="text" id="drive-api-key" placeholder="用於讀取雲端硬碟上的 Excel 檔（可與地圖金鑰相同，只要同一把金鑰有開通兩個 API）">
+          </div>
+          <div class="field">
+            <label for="drive-file-id">Excel 檔案 ID</label>
+            <input type="text" id="drive-file-id" placeholder="Drive 分享連結中 /d/ 與 /view 之間那一段">
+            <p class="hint">Excel 檔需在 Drive 設成「知道連結的人 — 檢視者」。更新資料時請用「上傳新版本」覆蓋同一個檔案，檔案 ID 才不會變。</p>
+          </div>
+          <div class="form-actions">
+            <button type="submit" id="settings-save-btn">儲存設定</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" id="data-status-card">
+        <h2>資料狀態</h2>
+        <div id="data-status-content"></div>
+        <div class="form-actions">
+          <button type="button" id="settings-refresh-btn" class="secondary">立即重新整理資料</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="vendor/exceljs.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
